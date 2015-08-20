@@ -1,0 +1,223 @@
+@import nib
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700)
+@import './variables.styl'
+
+/*
+* layout styles
+*/
+
+body
+  font-family 'Roboto', sans-serif
+  background-color color-grey-lighten3
+  margin 0
+  padding 0
+  user-select none
+
+header
+  position fixed
+  top 0
+  height 64
+  width 100%
+  background-color color-indigo
+  shadow(2)
+  user-select none
+  z-index 2
+
+  & .header
+    &-wrapper
+      display flex
+      padding 0px 72px
+    &-title
+      font(24px, 400, color-white,64px)
+      white-space nowrap
+
+main
+  margin 96 auto 48 auto
+  max-width 1200
+
+/*
+* index page styles
+*/
+
+.filter
+  display flex
+  justify-content flex-end
+  align-items center
+  padding 24 32
+
+  &-title
+    font(14px,400,color-grey-darken2,20px)
+    margin 0 16
+
+  &-toggle
+    margin 0 16
+
+
+.collapsible
+
+  &-header
+    display flex
+    align-items center
+    justify-content space-between
+    background-color color-white
+    margin 0 32
+    padding 0 72 0 52
+    height 48
+    box-shadow 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24)
+    font(16px, 400, rgba(0, 0, 0, 0.87))
+
+    &-flex-1,&-flex-2
+      margin 0 16
+
+    &-flex-1
+      flex 1
+
+    &-flex-2
+      flex 2
+
+  &-item
+    display flex
+    flex-direction column
+    position relative
+    background-color color-white
+    transition: all 0.25s linear
+    margin 0 32px
+    cursor pointer
+    height 64px
+
+    &:before
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      box-shadow 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24)
+      content ''
+      display block
+      pointer-events none
+      border-radius 0px
+
+    &.active
+      margin 20px 16px
+      border-radius 2px
+      height 260px
+
+      &:before
+        box-shadow 0  3px 10px rgba(0, 0, 0, 0.16), 0  3px 10px rgba(0, 0, 0, 0.23)
+        border-radius 2px
+
+      & .collapsible-item-header
+        padding 0 40
+
+    &-header
+      display flex
+      align-items center
+      justify-content space-between
+      height 64px
+      padding 0 24
+      font(12, 400,color-grey-darken1)
+
+      &-icon
+        height 28
+        width 28
+        border-radius 50%
+        text-align center
+        &.type-1
+          background-color #2196f3
+        &.type-2
+          background-color #8bc34a
+        &.type-3
+          background-color #ffc107
+
+
+        & .mdi
+          font(20, 400, white, 28px)
+
+      &-content
+        flex 2
+        font(14,400,rgba(black, 0.87))
+        margin 0 16
+
+      &-user
+        flex 1
+        margin 0 16
+
+      &-date
+        flex 1
+        margin 0 16
+
+      &-comment
+        flex 2
+        margin 0 16
+
+      &-mark
+        height 48px
+        width 48px
+        text-align center
+        overflow hidden
+        position relative
+        border-radius 50%
+
+        & .mdi
+          font(24px, 400,color-grey-lighten1, 48px)
+
+        &.active
+          & .mdi
+            color color-indigo
+
+    &-body
+      flex 1
+      display none
+      padding 16px 24px
+
+      &-content
+        flex 1
+        display flex
+        flex-direction column
+        justify-content space-between
+
+      &-row
+        display flex
+        margin 0 24
+        font(14, 400,color-grey-darken1,20px)
+
+        &-title
+          width 230px
+          font(14px, 600,color-grey-darken2, 20px)
+
+
+      &-comment
+        display flex
+        padding 0 24
+
+        & paper-input
+          flex 1
+
+
+    &.active
+      & .collapsible-item-body
+        display flex
+
+/*
+* tooltip
+*/
+.tooltip
+
+  &:after
+    background rgba(black, 0.8)
+    border-radius 2px
+    box-shadow shadow(1)
+    color color-white
+    content attr(data-tooltip)
+    margin-top -24px
+    opacity 0
+    padding  8px
+    position absolute
+    visibility hidden
+
+    transition all 0.4s ease-in-out
+    points-event none
+
+  &:hover:after
+    opacity 1
+    visibility visible

@@ -1,0 +1,30 @@
+{
+  "name": "audit",
+  "version": "0.0.1",
+  "description": "audit log viewer",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "authors": [
+    "Elena Sizova"
+  ],
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^2.1.0",
+    "requirejs": "~2.1.8",
+    "underscore": "~1.8.3",
+    "backbone": "^1.2.0",
+    "async": "^1.3.0",
+    "polymer": "Polymer/polymer#^1.0.0",
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#~1.0.6",
+    "paper-input": "PolymerElements/paper-input#~1.0.11",
+    "paper-button": "PolymerElements/paper-button#~1.0.3",
+    "paper-ripple": "PolymerElements/paper-ripple#~1.0.1",
+    "moment": "~2.10.6"
+  }
+}

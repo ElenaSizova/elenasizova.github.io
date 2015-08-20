@@ -1,0 +1,160 @@
+<html>
+<head>
+    <title>Audit</title>
+
+    <link href="styles/index.css" rel="stylesheet" type="text/css">
+
+    <!-- entry point to js models -->
+    <script data-main="js/config" src="/audit/bower_components/requirejs/require.js"></script>
+
+    <!-- material design icons -->
+    <link href="/audit/bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- polymers -->
+    <script src="/audit/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="/audit/bower_components/paper-toggle-button/paper-toggle-button.html">
+    <link rel="import" href="/audit/bower_components/paper-input/paper-input.html">
+    <link rel="import" href="/audit/bower_components/paper-ripple/paper-ripple.html">
+
+    <!--
+        // TODO go polymers styles for single file and import
+    -->
+    <style is="custom-style">
+        * {
+            --paper-toggle-button-unchecked-bar-color: #818181;
+            --paper-toggle-button-unchecked-button-color: #F1F1F1;
+            --paper-toggle-button-unchecked-ink-color: #818181;
+            --paper-toggle-button-checked-bar-color: #7986cb;
+            --paper-toggle-button-checked-button-color: #3f51b5;
+            --paper-toggle-button-checked-ink-color: #7986cb;
+
+            --paper-input-container-color: #9e9e9e;
+        }
+    </style>
+</head>
+<body>
+
+<!--
+    header
+    // TODO go to layout or mixin file
+-->
+
+<header>
+    <div class="header-wrapper">
+        <div class="header-title">
+            Audit log viewer
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="filter">
+            <div class="filter-title" >
+                Only suspicious
+            </div>
+            <div class="filter-toggle">
+                <paper-toggle-button class="filter-toggle-button">
+                </paper-toggle-button>
+            </div>
+        </div>
+
+        <div class="collapsible">
+            <div class="collapsible-header">
+                <div class="collapsible-header-flex-2">
+                    Type
+                </div>
+                <div class="collapsible-header-flex-1">
+                    User
+                </div>
+                <div class="collapsible-header-flex-1">
+                    Date
+                </div>
+                <div class="collapsible-header-flex-2">
+                    Audit marks
+                </div>
+            </div>
+            <div class="collapsible-body log-list">
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--
+    log item template
+    // TODO go to single file and load as dependence
+-->
+<script type="text/template" id="log_item_template">
+    <div class="collapsible-item-header">
+        <div class="collapsible-item-header-icon type-<%= variant%> ">
+            <% if (variant == 1) { %>
+            <i class="mdi mdi-account"></i>
+            <% } else if(variant == 2){ %>
+            <i class="mdi mdi-exclamation"></i>
+            <% } else { %>
+            <i class="mdi mdi-menu"></i>
+            <% } %>
+        </div>
+        <div class="collapsible-item-header-content">
+            <%= type %>
+        </div>
+        <div class="collapsible-item-header-user">
+            <%= event.user %>
+        </div>
+        <div class="collapsible-item-header-date">
+            <%= dateTime %>
+        </div>
+        <div class="collapsible-item-header-comment">
+            <%= audit.comment %>
+        </div>
+        <div class="collapsible-item-header-mark <%= audit.suspicious ? 'active': '' %>">
+            <i class="mdi mdi-bookmark"></i>
+            <paper-ripple></paper-ripple>
+        </div>
+    </div>
+
+    <div class="collapsible-item-body">
+        <div class="collapsible-item-body-content">
+            <div class="collapsible-item-body-rows">
+                <div class="collapsible-item-body-row">
+                    <div class="collapsible-item-body-row-title"> id:</div>
+                    <div class="collapsible-item-body-row-value"> <%= id %></div>
+                </div>
+
+                <% if (variant == 1 || variant == 2) { %>
+                    <div class="collapsible-item-body-row">
+                        <div class="collapsible-item-body-row-title"> success:</div>
+                        <div class="collapsible-item-body-row-value"> <%= event.success %></div>
+                    </div>
+                <% } %>
+                <% if (variant == 2) { %>
+                    <div class="collapsible-item-body-row">
+                        <div class="collapsible-item-body-row-title"> error:</div>
+                        <div class="collapsible-item-body-row-value"> <%= event.error %></div>
+                    </div>
+                    <div class="collapsible-item-body-row">
+                        <div class="collapsible-item-body-row-title"> IP address of the SSH server:</div>
+                        <div class="collapsible-item-body-row-value"> <%= event.addr %></div>
+                    </div>
+                    <div class="collapsible-item-body-row">
+                        <div class="collapsible-item-body-row-title"> IP address of the user:</div>
+                        <div class="collapsible-item-body-row-value"> <%= event.raddr %></div>
+                    </div>
+                <% } else if (variant == 3) { %>
+                <div class="collapsible-item-body-row">
+                    <div class="collapsible-item-body-row-title">  here will be other attributes ... </div>
+                </div>
+                <% } %>
+            </div>
+            <div class="collapsible-item-body-comment">
+                <paper-input no-label-float label="your comment"></paper-input>
+            </div>
+        </div>
+    </div>
+
+</script>
+
+</body>
+</html>

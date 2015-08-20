@@ -1,0 +1,171 @@
+[
+  {
+    "type": "auth.attempt",
+    "time": "2015-01-18T07:27:40Z",
+    "id": "abc1234124124",
+    "audit": {
+      "suspicious": true,
+      "comment": "user was locked"
+    },
+    "event": {
+      "user": "bob",
+      "success": false,
+      "error": "bad-key",
+      "addr": "192.168.1.1",
+      "raddr": "192.168.1.2"
+    }
+  },
+  {
+    "type": "auth.attempt",
+    "time": "2015-01-18T07:27:40Z",
+    "id": "abc1254324124",
+    "audit": {
+      "suspicious": false,
+      "comment": ""
+    },
+    "event": {
+      "user": "mary",
+      "success": false,
+      "error": "bad-key",
+      "addr": "192.168.1.1",
+      "raddr": "192.168.1.2"
+    }
+  },
+  {
+    "type": "auth.attempt",
+    "time": "2015-03-18T07:25:40Z",
+    "id": "abc123465vf",
+    "audit": {
+      "suspicious": false,
+      "comment": "auditors comment"
+    },
+    "event": {
+      "user": "kate",
+      "success": false,
+      "error": "bad-key",
+      "addr": "192.168.1.1",
+      "raddr": "192.168.1.2"
+    }
+  },
+  {
+    "type": "auth.attempt",
+    "time": "2015-05-18T09:27:40Z",
+    "id": "abc123445cf34",
+    "audit": {
+      "suspicious": true,
+      "comment": ""
+    },
+    "event": {
+      "user": "marty",
+      "success": true
+    }
+  },
+  {
+    "type": "session.log",
+    "id": "abc12sdf124124",
+    "time": "2015-06-18T22:27:40Z",
+    "audit": {
+      "suspicious": false,
+      "comment": ""
+    },
+    "event": {
+      "user": "marty",
+      "commands": [
+        {
+          "command": "create new branch",
+          "output": "L3RtcC...",
+          "code": 0
+        },
+        {
+          "command": "create new directory",
+          "output": "L3RtcC...",
+          "code": 0
+        }
+      ]
+    }
+  },
+  {
+    "type": "auth.attempt",
+    "time": "2015-05-18T15:27:40Z",
+    "id": "abc123345c43",
+    "audit": {
+      "suspicious": false,
+      "comment": ""
+    },
+    "event": {
+      "user": "tom",
+      "success": false,
+      "error": "bad-key",
+      "addr": "192.168.1.1",
+      "raddr": "192.168.1.2"
+    }
+  },
+  {
+    "type": "auth.attempt",
+    "time": "2015-05-18T09:27:40Z",
+    "id": "abc1234rr124",
+    "audit": {
+      "suspicious": false,
+      "comment": "auditors comment"
+    },
+    "event": {
+      "user": "linda",
+      "success": true
+    }
+  },
+  {
+    "type": "auth.attempt",
+    "time": "2015-07-18T07:27:40Z",
+    "id": "abc12341299k04",
+    "audit": {
+      "suspicious": true,
+      "comment": "unexpected"
+    },
+    "event": {
+      "user": "bob",
+      "success": false,
+      "error": "bad-key",
+      "addr": "192.168.1.1",
+      "raddr": "192.168.1.2"
+    }
+  },
+  {
+    "type": "session.log",
+    "id": "abc12sdf1d4124",
+    "time": "2015-09-18T22:34:40Z",
+    "audit": {
+      "suspicious": false,
+      "comment": ""
+    },
+    "event": {
+      "user": "linda",
+      "commands": [
+        {
+          "command": "create new branch",
+          "output": "L3RtcC...",
+          "code": 0
+        },
+        {
+          "command": "create new directory",
+          "output": "L3RtcC...",
+          "code": 0
+        }
+      ]
+    }
+  },
+  {
+    "type": "auth.attempt",
+    "time": "2015-07-18T07:27:40Z",
+    "id": "abc123423d124",
+    "audit": {
+      "suspicious": true,
+      "comment": ""
+    },
+    "event": {
+      "user": "katty",
+      "success": true
+    }
+  }
+]
+
+
