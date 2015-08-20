@@ -48,7 +48,7 @@ define("logList", ['jquery', 'underscore', 'Backbone','moment', 'logItem'],funct
         load: function(){
             var self = this;
 
-            $.getJSON("/audit/data.json", function(data) {
+            $.getJSON("/data.json", function(data) {
 
                 /* cache json */
                 self.data = data;
