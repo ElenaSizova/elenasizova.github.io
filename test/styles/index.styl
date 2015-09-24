@@ -1,0 +1,168 @@
+
+@import nib
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800')
+@import './variables.styl'
+
+body, html
+  padding 0
+  margin 0
+
+body
+  font-family 'Open Sans', sans-serif
+  background-color color-grey-dark-1
+  font(13px,400,color-text-white, 24px,0)
+
+h1
+  font(36px,300,color-text-white, 36px,0,01em)
+
+h2
+  font(28px,300,color-text-white, 72px,0,01em)
+
+h1,h2
+  padding 0
+  margin 0
+
+header
+  background-color color-grey-dark-2
+  width 100%
+
+  & .header
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    text-transform uppercase
+    padding 0 98px
+
+    &-description
+      font(12px,400,color-text-grey,72px,0.075em)
+
+    &-title
+      font(28px,300,color-text-white,72px,0.05em)
+
+    &-actions
+      display flex
+      align-items center
+      flex-direction row
+      font(12px,600,color-text-grey-light, 72px,0.1em)
+
+      &-lang
+        cursor pointer
+
+      & i
+        cursor pointer
+        margin-left 46px
+        font-size 20px
+
+main
+  width 1200px
+  max-width 1200px
+  margin 0 auto
+
+  & .main
+    padding 54px 50px
+
+    &-title
+      text-align center
+
+    &-description
+      display flex
+      justify-content center
+      margin-top 54px
+
+      &-item
+        padding 0 16px
+        max-width 490px
+
+  & .production
+    margin 20px 0
+    text-align center
+
+    &-legend
+      display flex
+      flex-direction row
+      justify-content: center
+      font(16px,400,color-text-white, 20px)
+      margin-top 10px
+
+      &-item
+        display flex
+        padding 0 24px
+        align-items center
+
+        &-production,&-consumption
+          height 16px
+          width 16px
+          margin 0 12px
+
+        &-consumption
+          background-color color-text-grey-light-1
+
+        &-production
+          background-color white
+
+    &-graph
+      &-main
+        display flex
+        flex-direction row
+
+      &-container
+        flex 1
+
+      &-values
+        display flex
+        flex-direction column
+        justify-content space-between
+        width: 50px;
+        margin-right: 15px
+        margin-top 15px
+        text-align right
+        font(16px,400,color-text-white,20px)
+
+      &-years
+        display flex
+        flex-direction row
+        justify-content space-between
+        margin 15px 0 0 60px
+        font(16px,400,color-text-white,20px)
+
+
+footer
+  background-color color-text-grey-light-3
+  min-height 270px
+  height 270px
+
+  .footer
+    width 1200px
+    max-width 1200px
+    margin 0 auto
+
+    &-container
+      padding 0 50px
+      display flex
+      align-items center
+      height 100%
+
+    &-description
+      font(13px, 400,color-text-grey-dark,22px)
+
+      & a
+        color color-red
+
+      &-copyright
+        margin-top 36px
+
+    &-urls
+      margin-left 80px
+      display flex
+      flex-direction column
+
+      & a
+        font(11px,400,color-text-grey-dark-1,20px,0.1em)
+        margin 10 0
+        text-transform uppercase
+        text-decoration none
+
+
+
+

@@ -1,0 +1,274 @@
+<html>
+
+<head>
+
+    <link href="styles/index.css" rel="stylesheet" type="text/css">
+
+    <link href="/bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet"
+          type="text/css"/>
+
+    <script data-main="views/js/config" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script data-main="views/js/config" src="/bower_components/underscore/underscore-min.js"></script>
+
+    <script data-main="views/js/config" src="/bower_components/raphael/raphael-min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var v = {
+                fullHeight: 500,
+                fullWidth: 1100,
+                height: 470, // высоты графика
+                width: 1035, // ширина графика,
+                topOffset: 30,
+                rightOffset: 65
+            }
+
+            var paper = Raphael($('.production-graph-container').get(0), v.fullWidth, v.fullHeight);
+
+            /*******
+             * horizontal
+             */
+            for (var i = 0; i < 7; i++) {
+                var path = paper.path("M0,0,1035,0z");
+                path.translate(0, v.height / 6 * i + v.topOffset);
+                path.attr("stroke", "#696d71");
+            }
+
+            /*******
+             * vertical
+             */
+            for (var i = 0; i < 16; i++) {
+                var path = paper.path("M0,0,0,470z");
+                path.translate(v.width / 15 * i, v.topOffset);
+                path.attr("stroke", "#393e42");
+            }
+
+            $.getJSON("production.json", function (data) {
+
+                _.each(data, function (item, index) {
+                    addColumn(index, item.production, item.consumption);
+                });
+            });
+
+            function addColumn(index, production, consumption) {
+
+
+                // оставляем 60px, чтобы умещался tooltip справа
+                var startX = index * 50 + index * (v.width - 15 * 50) / 14;
+                var consumptionHeight = v.height * consumption / 60000;
+                var productionHeight = v.height * production / 60000;
+
+                var consumeEl = paper.rect(startX, v.fullHeight - consumptionHeight, 30, consumptionHeight);
+                consumeEl.attr("fill", "#b6b6b6");
+                consumeEl.attr("stroke", "#41474c");
+
+                var productionEl = paper.rect(startX + 20, v.fullHeight - productionHeight, 30, productionHeight);
+                productionEl.attr("fill", "#e6e6e6");
+                productionEl.attr("stroke", 0);
+                productionEl.toFront();
+                productionEl.glow({color: "#41474c", width: 10, opacity: 0.5, offsety: 7});
+
+                (function (production, value) {
+                    production.hover(function () {
+                                var x = production.getBBox().x;
+                                var y = production.getBBox().y;
+
+                                this.tooltip = new Tooltip(x, y, value);
+                                this.tooltip.show();
+
+                                production.animate({"fill": "#f01a1a"}, 200);
+                            },
+                            function () {
+
+                                this.tooltip.hide();
+                                production.animate({"fill": "#e6e6e6"}, 200);
+                            });
+                })(productionEl, production);
+
+                (function (consume, value) {
+                    consume.hover(function () {
+                                var x = consume.getBBox().x;
+                                var y = consume.getBBox().y;
+
+                                this.tooltip = new Tooltip(x, y, value);
+                                this.tooltip.show();
+
+                                consume.animate({"fill": "#f01a1a"}, 200);
+                            },
+                            function () {
+                                this.tooltip.hide();
+                                consume.animate({"fill": "#b6b6b6"}, 200);
+                            });
+                })(consumeEl, consumption);
+            }
+
+            function Tooltip(x, y, value) {
+                this.x = x;
+                this.y = y;
+                this.text = value;
+            }
+
+            Tooltip.prototype = {
+                show: function () {
+
+                    var x = this.x;
+                    var y = this.y;
+
+                    var tooltip = this.tooltip = paper.rect(x + 1, y - 60, 100, 30);
+                    tooltip.attr("fill", "#ff2222");
+                    tooltip.attr("stroke", "#ff2222");
+
+                    var path = this.path = paper.path("M0,0,15,0,0,10z");
+                    path.translate(x + 1, y - 30);
+                    path.attr("fill", "#ca0505");
+                    path.attr("stroke", "#ca0505");
+
+                    this.text = paper.text(x + 50, y - 46, this.text)
+                            .attr({fill: '#ffffff', "font-family": "Open Sans", "font-size": "22px"});
+                },
+                hide: function () {
+                    this.tooltip.remove();
+                    this.path.remove();
+                    this.text.remove();
+                }
+            }
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<header>
+    <div class="header">
+        <div class="header-description"> Сайт об алюминии</div>
+        <div class="header-title"> Экономика</div>
+        <div class="header-actions">
+            <div class="header-actions-lang"> en</div>
+            <i class="mdi mdi-magnify"></i>
+            <i class="mdi mdi-menu"></i>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="main">
+        <div class="main-title">
+            <h1> Как устроен мировой рынок алюминия? </h1>
+        </div>
+
+        <div class="main-description">
+            <div class="main-description-item">
+                Алюминий является одним из биржевых товаров. Это означает, что его характеристики стандартизированы и
+                для
+                потребителя не важно, кто именно в мире его произвел. Мировая цена на алюминий ежедневно определяется в
+                ходе
+                торгов на международных биржах, специализирующихся на биржевых товарах. Производством алюминия
+            </div>
+            <div class="main-description-item">
+                занимаются десятки компаний по всему миру, при этом половина всего произведенного «крылатого металла»
+                приходится
+                на десять крупнейших производителей. Алюминий – второй по популярности конструктивный материал в мире
+                после
+                железа, его потребителями являются практически все отрасли промышленности.
+            </div>
+        </div>
+
+        <div class="production">
+            <h2> Произоводство и потребление алюминия в мире </h2>
+
+            <div class="production-legend">
+                <div class="production-legend-item">
+                    <div class="production-legend-item-consumption">
+
+                    </div>
+                    <div> Потребление</div>
+                </div>
+                <div class="production-legend-item">
+                    <div class="production-legend-item-production">
+
+                    </div>
+                    <div> Производство</div>
+                </div>
+            </div>
+
+            <div class="production-graph">
+                <div class="production-graph-main">
+                    <div class="production-graph-values">
+                        <div> 60 000</div>
+                        <div> 50 000</div>
+                        <div> 40 000</div>
+                        <div> 30 000</div>
+                        <div> 20 000</div>
+                        <div> 10 000</div>
+                        <div> 0</div>
+                    </div>
+                    <div class="production-graph-container"></div>
+                </div>
+                <div class="production-graph-years">
+                    <div> 2000</div>
+                    <div> 2001</div>
+                    <div> 2002</div>
+                    <div> 2003</div>
+                    <div> 2004</div>
+                    <div> 2005</div>
+                    <div> 2006</div>
+                    <div> 2007</div>
+                    <div> 2008</div>
+                    <div> 2009</div>
+                    <div> 2010</div>
+                    <div> 2011</div>
+                    <div> 2012</div>
+                    <div> 2013</div>
+                    <div> 2014</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</main>
+
+<footer>
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-description">
+                <div class="footer-description-text">
+                    Сайт об алюминии. Проект <a href="#"> UC RUSAL </a>, крупнейшего
+                    <br/>
+                    в мире производителя алюминия и глинозема.
+                </div>
+                <div class="footer-description-copyright">
+                    2015 РУСАЛ Все права защищены
+                </div>
+            </div>
+
+            <div class="footer-urls">
+                <a href="#">Применение </a>
+                <a href="#"> Об алюминии </a>
+                <a href="#">Производство </a>
+            </div>
+
+            <div class="footer-urls">
+                <a href="#"> История металла </a>
+                <a href="#"> Экономика </a>
+                <a href="#"> О проекте </a>
+            </div>
+
+            <div class="footer-text">
+                uplab
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+
+
+</body>
+</html>

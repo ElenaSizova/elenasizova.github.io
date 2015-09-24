@@ -1,0 +1,77 @@
+[
+  {
+    "year": 2000,
+    "production" : 26700,
+    "consumption": 24400
+  },
+  {
+    "year": 2001,
+    "production" : 26700,
+    "consumption": 25900
+  },
+  {
+    "year": 2002,
+    "production" : 27700,
+    "consumption": 28900
+  },
+  {
+    "year": 2003,
+    "production" : 28100,
+    "consumption": 29400
+  },
+  {
+    "year": 2004,
+    "production" : 30700,
+    "consumption": 28400
+  },
+  {
+    "year": 2005,
+    "production" : 32400,
+    "consumption": 31500
+  },
+  {
+    "year": 2006,
+    "production" : 35600,
+    "consumption": 33400
+  },
+  {
+    "year": 2007,
+    "production" : 37700,
+    "consumption": 37200
+  },
+  {
+    "year": 2008,
+    "production" : 40162,
+    "consumption": 38100
+  },
+  {
+    "year": 2009,
+    "production" : 36500,
+    "consumption": 39200
+  },
+  {
+    "year": 2010,
+    "production" : 41300,
+    "consumption": 43100
+  },
+  {
+    "year": 2011,
+    "production" : 45000,
+    "consumption": 45500
+  },
+  {
+    "year": 2012,
+    "production" : 47700,
+    "consumption": 45200
+  },
+  {
+    "year": 2013,
+    "production" : 50100,
+    "consumption": 49200
+  },
+  {
+    "year": 2014,
+    "production" : 55400,
+    "consumption": 54200
+  }
+]
