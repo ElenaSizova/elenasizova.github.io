@@ -419,6 +419,7 @@ main .production-graph-years {
 }
 .makers {
   margin-top: 30px;
+  text-align: center;
 }
 footer {
   background-color: #f2f3f8;
