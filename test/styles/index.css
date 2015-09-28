@@ -336,7 +336,7 @@ main .production-graph-years {
 }
 .map-graph {
   margin: -20px -235px;
-  background-image: url("/audit/test/img/map_alum6.png");
+  background-image: url("/img/map_alum6.png");
 }
 .map-years {
   position: absolute;
