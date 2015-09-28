@@ -1,0 +1,368 @@
+{
+  "type1" : {
+    "2014" : {
+      "africa" : "3,5",
+      "australia": "12,2",
+      "southAmerica": "2,2",
+      "nordAmerica": "26,2",
+      "europe": "7,2",
+      "azia": "3,2"
+    },
+    "2013" : {
+      "africa" : "36",
+      "australia": "662",
+      "southAmerica": "666",
+      "nordAmerica": "66",
+      "europe": "6",
+      "azia": "6"
+    },
+    "2012" : {
+      "africa" : "6",
+      "australia": "5",
+      "southAmerica": "3",
+      "nordAmerica": "42",
+      "europe": "7",
+      "azia": "54"
+    },
+    "2011" : {
+      "africa" : "5",
+      "australia": "12",
+      "southAmerica": "8,2",
+      "nordAmerica": "36,2",
+      "europe": "75,2",
+      "azia": "34,2"
+    },
+    "2010" : {
+      "africa" : "23,5",
+      "australia": "452,7",
+      "southAmerica": "7,2",
+      "nordAmerica": "256,2",
+      "europe": "74,2",
+      "azia": "36,2"
+    },
+    "2009" : {
+      "africa" : "3,23",
+      "australia": "12,4",
+      "southAmerica": "2,5",
+      "nordAmerica": "43,2",
+      "europe": "0,2",
+      "azia": "83,2"
+    },
+    "2008" : {
+      "africa" : "83,5",
+      "australia": "12,8",
+      "southAmerica": "9,2",
+      "nordAmerica": "77,2",
+      "europe": "7,0",
+      "azia": "53,2"
+    },
+    "2007" : {
+      "africa" : "5,5",
+      "australia": "84,2",
+      "southAmerica": "66,2",
+      "nordAmerica": "7,2",
+      "europe": "0,2",
+      "azia": "3,2"
+    },
+    "2006" : {
+      "africa" : "8,5",
+      "australia": "12,7",
+      "southAmerica": "5,2",
+      "nordAmerica": "4",
+      "europe": "32",
+      "azia": "12"
+    },
+    "2005" : {
+      "africa" : "3,5",
+      "australia": "65,6",
+      "southAmerica": "25,4",
+      "nordAmerica": "76",
+      "europe": "5",
+      "azia": "6"
+    },
+    "2004" : {
+      "africa" : "32,8",
+      "australia": "32,8",
+      "southAmerica": "32,8",
+      "nordAmerica": "32,8",
+      "europe": "32,8",
+      "azia": "32,8"
+    },
+    "2003" : {
+      "africa" : "3,5",
+      "australia": "12,2",
+      "southAmerica": "2,2",
+      "nordAmerica": "26,2",
+      "europe": "7,2",
+      "azia": "3,2"
+    },
+    "2002" : {
+      "africa" : "3,5",
+      "australia": "7,2",
+      "southAmerica": "7,2",
+      "nordAmerica": "7,2",
+      "europe": "7,2",
+      "azia": "3,2"
+    },
+    "2001" : {
+      "africa" : "3,5",
+      "australia": "54,4",
+      "southAmerica": "2,2",
+      "nordAmerica": "26,2",
+      "europe": "7,2",
+      "azia": "23,4"
+    },
+    "2000" : {
+      "africa" : "12",
+      "australia": "54",
+      "southAmerica": "4",
+      "nordAmerica": "3,4",
+      "europe": "5,6",
+      "azia": "54,6"
+    }
+  },
+  "type2" : {
+    "2014" : {
+      "africa" : "34,5",
+      "australia": "45,6",
+      "southAmerica": "345",
+      "nordAmerica": "55",
+      "europe": "76,7",
+      "azia": "77,4"
+    },
+    "2013" : {
+      "africa" : "44",
+      "australia": "44",
+      "southAmerica": "44",
+      "nordAmerica": "4",
+      "europe": "4",
+      "azia": "64"
+    },
+    "2012" : {
+      "africa" : "61",
+      "australia": "15",
+      "southAmerica": "13",
+      "nordAmerica": "242",
+      "europe": "17",
+      "azia": "14"
+    },
+    "2011" : {
+      "africa" : "25",
+      "australia": "22",
+      "southAmerica": "2,2",
+      "nordAmerica": "26,2",
+      "europe": "25,2",
+      "azia": "24,2"
+    },
+    "2010" : {
+      "africa" : "33,5",
+      "australia": "352,7",
+      "southAmerica": "3,2",
+      "nordAmerica": "256,3",
+      "europe": "34,3",
+      "azia": "33,2"
+    },
+    "2009" : {
+      "africa" : "4,23",
+      "australia": "44,4",
+      "southAmerica": "4,5",
+      "nordAmerica": "44,2",
+      "europe": "4,2",
+      "azia": "44,2"
+    },
+    "2008" : {
+      "africa" : "55,5",
+      "australia": "55,8",
+      "southAmerica": "9,5",
+      "nordAmerica": "75,2",
+      "europe": "755,0",
+      "azia": "535,2"
+    },
+    "2007" : {
+      "africa" : "65,5",
+      "australia": "86,2",
+      "southAmerica": "666,2",
+      "nordAmerica": "76,2",
+      "europe": "62",
+      "azia": "36,2"
+    },
+    "2006" : {
+      "africa" : "78,5",
+      "australia": "82,7",
+      "southAmerica": "85,2",
+      "nordAmerica": "48",
+      "europe": "327",
+      "azia": "172"
+    },
+    "2005" : {
+      "africa" : "8,8",
+      "australia": "88,6",
+      "southAmerica": "285,4",
+      "nordAmerica": "78",
+      "europe": "58",
+      "azia": "86"
+    },
+    "2004" : {
+      "africa" : "399,8",
+      "australia": "92,8",
+      "southAmerica": "99,8",
+      "nordAmerica": "32,9",
+      "europe": "32,9",
+      "azia": "32,8"
+    },
+    "2003" : {
+      "africa" : "0",
+      "australia": "0,2",
+      "southAmerica": "0,2",
+      "nordAmerica": "26,0",
+      "europe": "0",
+      "azia": "3,2"
+    },
+    "2002" : {
+      "africa" : "0",
+      "australia": "0",
+      "southAmerica": "0",
+      "nordAmerica": "0",
+      "europe": "12",
+      "azia": "23"
+    },
+    "2001" : {
+      "africa" : "33",
+      "australia": "33",
+      "southAmerica": "333,2",
+      "nordAmerica": "33,2",
+      "europe": "33,2",
+      "azia": "33,4"
+    },
+    "2000" : {
+      "africa" : "44",
+      "australia": "44",
+      "southAmerica": "5",
+      "nordAmerica": "3,45",
+      "europe": "5,6",
+      "azia": "54,6"
+    }
+  },
+  "type3" : {
+    "2014" : {
+      "africa" : "444,5",
+      "australia": "456,6",
+      "southAmerica": "456",
+      "nordAmerica": "456",
+      "europe": "456,7",
+      "azia": "456,4"
+    },
+    "2013" : {
+      "africa" : "776",
+      "australia": "776",
+      "southAmerica": "776",
+      "nordAmerica": "776",
+      "europe": "776",
+      "azia": "776"
+    },
+    "2012" : {
+      "africa" : "336",
+      "australia": "336",
+      "southAmerica": "336",
+      "nordAmerica": "336",
+      "europe": "336",
+      "azia": "336"
+    },
+    "2011" : {
+      "africa" : "11",
+      "australia": "11",
+      "southAmerica": "11,2",
+      "nordAmerica": "11,2",
+      "europe": "25,11",
+      "azia": "24,11"
+    },
+    "2010" : {
+      "africa" : "88,5",
+      "australia": "88,7",
+      "southAmerica": "3,88",
+      "nordAmerica": "88,3",
+      "europe": "34,88",
+      "azia": "33,88"
+    },
+    "2009" : {
+      "africa" : "123",
+      "australia": "123,4",
+      "southAmerica": "437,5",
+      "nordAmerica": "44,42",
+      "europe": "54,2",
+      "azia": "7,2"
+    },
+    "2008" : {
+      "africa" : "5,5",
+      "australia": "5,8",
+      "southAmerica": "5,5",
+      "nordAmerica": "5,2",
+      "europe": "5,0",
+      "azia": "5,2"
+    },
+    "2007" : {
+      "africa" : "7,5",
+      "australia": "7,2",
+      "southAmerica": "7,7",
+      "nordAmerica": "7,7",
+      "europe": "7",
+      "azia": "7,2"
+    },
+    "2006" : {
+      "africa" : "99,99",
+      "australia": "9,7",
+      "southAmerica": "9,2",
+      "nordAmerica": "498",
+      "europe": "9",
+      "azia": "9"
+    },
+    "2005" : {
+      "africa" : "8,9",
+      "australia": "88,68",
+      "southAmerica": "285,7",
+      "nordAmerica": "2",
+      "europe": "2",
+      "azia": "22"
+    },
+    "2004" : {
+      "africa" : "223,8",
+      "australia": "87,8",
+      "southAmerica": "6,8",
+      "nordAmerica": "345,69",
+      "europe": "32,69",
+      "azia": "32,8"
+    },
+    "2003" : {
+      "africa" : "0",
+      "australia": "55,2",
+      "southAmerica": "66,2",
+      "nordAmerica": "5,0",
+      "europe": "50",
+      "azia": "3,2"
+    },
+    "2002" : {
+      "africa" : "60",
+      "australia": "6",
+      "southAmerica": "50",
+      "nordAmerica": "50",
+      "europe": "162",
+      "azia": "6"
+    },
+    "2001" : {
+      "africa" : "100",
+      "australia": "100",
+      "southAmerica": "333,2",
+      "nordAmerica": "100,2",
+      "europe": "100,2",
+      "azia": "33,4"
+    },
+    "2000" : {
+      "africa" : "44",
+      "australia": "3",
+      "southAmerica": "5",
+      "nordAmerica": "3,45",
+      "europe": "35,6",
+      "azia": "54,6"
+    }
+  }
+}

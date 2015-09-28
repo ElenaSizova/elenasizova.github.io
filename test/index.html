@@ -7,133 +7,225 @@
     <link href="/bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet"
           type="text/css"/>
 
-    <script data-main="views/js/config" src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script data-main="views/js/config" src="/bower_components/underscore/underscore-min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/underscore/underscore-min.js"></script>
+    <script src="/bower_components/raphael/raphael-min.js"></script>
 
-    <script data-main="views/js/config" src="/bower_components/raphael/raphael-min.js"></script>
+    <script src="js/production.js"></script>
 
     <script type="text/javascript">
 
         $(document).ready(function () {
 
-            var v = {
-                fullHeight: 500,
-                fullWidth: 1100,
-                height: 470, // высоты графика
-                width: 1035, // ширина графика,
-                topOffset: 30,
-                rightOffset: 65
-            }
-
-            var paper = Raphael($('.production-graph-container').get(0), v.fullWidth, v.fullHeight);
-
-            /*******
-             * horizontal
-             */
-            for (var i = 0; i < 7; i++) {
-                var path = paper.path("M0,0,1035,0z");
-                path.translate(0, v.height / 6 * i + v.topOffset);
-                path.attr("stroke", "#696d71");
-            }
-
-            /*******
-             * vertical
-             */
-            for (var i = 0; i < 16; i++) {
-                var path = paper.path("M0,0,0,470z");
-                path.translate(v.width / 15 * i, v.topOffset);
-                path.attr("stroke", "#393e42");
-            }
-
-            $.getJSON("production.json", function (data) {
-
-                _.each(data, function (item, index) {
-                    addColumn(index, item.production, item.consumption);
-                });
-            });
-
-            function addColumn(index, production, consumption) {
-
-
-                // оставляем 60px, чтобы умещался tooltip справа
-                var startX = index * 50 + index * (v.width - 15 * 50) / 14;
-                var consumptionHeight = v.height * consumption / 60000;
-                var productionHeight = v.height * production / 60000;
-
-                var consumeEl = paper.rect(startX, v.fullHeight - consumptionHeight, 30, consumptionHeight);
-                consumeEl.attr("fill", "#b6b6b6");
-                consumeEl.attr("stroke", "#41474c");
-
-                var productionEl = paper.rect(startX + 20, v.fullHeight - productionHeight, 30, productionHeight);
-                productionEl.attr("fill", "#e6e6e6");
-                productionEl.attr("stroke", 0);
-                productionEl.toFront();
-                productionEl.glow({color: "#41474c", width: 10, opacity: 0.5, offsety: 7});
-
-                (function (production, value) {
-                    production.hover(function () {
-                                var x = production.getBBox().x;
-                                var y = production.getBBox().y;
-
-                                this.tooltip = new Tooltip(x, y, value);
-                                this.tooltip.show();
-
-                                production.animate({"fill": "#f01a1a"}, 200);
-                            },
-                            function () {
-
-                                this.tooltip.hide();
-                                production.animate({"fill": "#e6e6e6"}, 200);
-                            });
-                })(productionEl, production);
-
-                (function (consume, value) {
-                    consume.hover(function () {
-                                var x = consume.getBBox().x;
-                                var y = consume.getBBox().y;
-
-                                this.tooltip = new Tooltip(x, y, value);
-                                this.tooltip.show();
-
-                                consume.animate({"fill": "#f01a1a"}, 200);
-                            },
-                            function () {
-                                this.tooltip.hide();
-                                consume.animate({"fill": "#b6b6b6"}, 200);
-                            });
-                })(consumeEl, consumption);
-            }
-
-            function Tooltip(x, y, value) {
-                this.x = x;
-                this.y = y;
-                this.text = value;
-            }
-
-            Tooltip.prototype = {
-                show: function () {
-
-                    var x = this.x;
-                    var y = this.y;
-
-                    var tooltip = this.tooltip = paper.rect(x + 1, y - 60, 100, 30);
-                    tooltip.attr("fill", "#ff2222");
-                    tooltip.attr("stroke", "#ff2222");
-
-                    var path = this.path = paper.path("M0,0,15,0,0,10z");
-                    path.translate(x + 1, y - 30);
-                    path.attr("fill", "#ca0505");
-                    path.attr("stroke", "#ca0505");
-
-                    this.text = paper.text(x + 50, y - 46, this.text)
-                            .attr({fill: '#ffffff', "font-family": "Open Sans", "font-size": "22px"});
+            var color = {
+                continent: {
+                    fill: "#d20d0d",
+                    stroke: "#a32628",
                 },
-                hide: function () {
-                    this.tooltip.remove();
-                    this.path.remove();
-                    this.text.remove();
+                circle: {
+                    fill: "#e5e5e5",
+                    text: "7b7e83",
+                    hover: {
+                        fill: "#d40e0f",
+                        text: "#ffffff"
+                    }
+                }
+            };
+
+            function Continent(map, data, name){
+
+                this.paths = [];
+                this.name = name;
+
+                this.init(map, data);
+            }
+
+            Continent.prototype = {
+                init: function(map, data){
+
+                    var self = this;
+                    var paths = data[this.name];
+                    _.each(paths, function(path) {
+
+                        var path = map.path(path);
+                        path.attr("fill", color.continent.fill);
+                        path.attr("stroke", color.continent.stroke);
+                        path.attr("opacity", 0);
+
+                        self.paths.push(path);
+                    });
+                },
+                show: function(){
+                    _.each(this.paths, function(path){
+                        path.animate({"opacity": 0.5}, 100);
+                    });
+                },
+                hide: function(){
+                    _.each(this.paths, function(path){
+                        path.animate({"opacity": 0}, 100);
+                    });
+                }
+            };
+
+            function Label(name, fullName){
+                this.name = name;
+                this.fullName = fullName;
+            }
+
+            Label.prototype = {
+                init: function(x, y, r, map,data){
+                    var self = this;
+
+                    this.continent =  new Continent(map,data, this.name);
+
+                    var circle = map.circle(x, y, r);
+                    circle.attr("fill",color.circle.fill);
+                    circle.attr("stroke", 0);
+                    circle.toFront();
+                    circle.glow({color: "#41474c", width: 5, opacity: 0.5, offsety: 2.5});
+
+                    this.value = map.text(x, y, "4,56")
+                            .attr({fill: color.circle.text,
+                                "font-family": "Open Sans", "font-size": "15.6px", "font-weight": 600});
+
+                    this.title = map.text(x, y-5, this.fullName)
+                            .attr({fill: color.circle.hover.text, "opacity" : 0,
+                                "font-family": "Open Sans", "font-size": "13px", "font-weight": 400});
+
+                    var elementSet = map.set();
+                    elementSet.push(circle);
+                    elementSet.push(this.value);
+                    elementSet.push(this.title);
+
+                    elementSet.attr('cursor','pointer');
+
+                    elementSet.hover(function () {
+                                var x = circle.getBBox().x;
+                                var y = circle.getBBox().y;
+
+                                self.continent.show();
+                                self.title.attr({"opacity" : 1});
+                                self.value.translate(0, 25).attr({fill: color.circle.hover.text});
+
+                                circle.animate({"fill": color.circle.hover.fill}, 100);
+                            },
+                            function () {
+                                self.continent.hide();
+                                self.title.attr({"opacity" : 0});
+                                self.value.translate(0, -25).attr({fill: color.circle.text});
+                                circle.animate({"fill": color.circle.fill}, 100);
+                            });
+
+                },
+
+                update: function(current){
+                    var value = current[this.name];
+                    this.value.attr({"text" : value});
                 }
             }
+
+            function Map(){
+                this.year = "2014";
+                this.type = "type1";
+                this.labels = [];
+                this.init();
+            }
+
+            Map.prototype = {
+
+                init: function(){
+
+                    var self = this;
+                    var map = Raphael($('.map-graph').get(0), 1570, 724);
+
+                    $.getJSON("map.json", function (data) {
+                        $.getJSON("values.json", function (values) {
+
+                            self.values = values;
+
+                            var nordAmerica = new Label('nordAmerica', 'Северная \n Америка');
+                            nordAmerica.init(330, 185, 47, map, data);
+                            self.labels.push(nordAmerica);
+
+                            var southAmerica = new Label('southAmerica', 'Центральная \n и Южная \n Америка');
+                            southAmerica.init(530, 450, 50.5, map, data);
+                            self.labels.push(southAmerica);
+
+                            var africa = new Label('africa', 'Африка');
+                            africa.init(730, 360, 40, map, data);
+                            self.labels.push(africa);
+
+                            var europe = new Label('europe', 'Европа');
+                            europe.init(930, 170, 45, map, data);
+                            self.labels.push(europe);
+
+                            var azia = new Label('azia', 'Азия');
+                            azia.init(1180, 300, 52, map, data);
+                            self.labels.push(azia);
+
+                            var australia = new Label('australia', 'Австралия');
+                            australia.init(1350, 530, 37.5, map, data);
+                            self.labels.push(australia);
+
+                            $('.map-type-item').on('click', function () {
+                                $('.map-type-item').removeClass('active');
+                                $(this).addClass('active');
+
+                                self.type = $(this).attr('data-type');
+                                self.updateLabels();
+                            });
+
+                            $('.map-years-prev').on('click', function () {
+                                var $items = $('.map-years-items');
+                                var margin = parseInt($items.css('margin-right'));
+
+                                if (margin == -750)
+                                    return;
+
+                                $items.animate({
+                                    marginRight: (margin - 75 * 5) + 'px'
+                                }, 300);
+                            });
+
+                            $('.map-years-next').on('click', function () {
+                                var $items = $('.map-years-items');
+                                var margin = parseInt($items.css('margin-right'));
+
+                                if (margin == 0)
+                                    return;
+
+                                $items.animate({
+                                    marginRight: (margin + 75 * 5) + 'px'
+                                }, 300);
+                            });
+
+                            $('.map-years-items-item').on('click', function () {
+                                $('.map-years-items-item').removeClass('active');
+                                $(this).addClass('active');
+
+                                self.year = $(this).attr('data-year');
+                                self.updateLabels();
+                            });
+
+                            self.updateLabels();
+                        });
+
+                    });
+                },
+
+                updateLabels: function(){
+
+                    var current = this.values[this.type][this.year];
+
+                    _.each(this.labels, function(label){
+                       label.update(current);
+                    });
+
+                }
+            }
+
+
+            var map = new Map();
 
         });
 
@@ -178,8 +270,55 @@
             </div>
         </div>
 
+        <div class="map">
+            <h2> Общий мировой объем добычи бокситов </br> и производства глинозема (млн.т) </h2>
+
+            <div class="map-container">
+
+                <div class="map-graph">
+
+                </div>
+
+                <div class="map-type">
+                    <div class="map-type-item active" data-type="type1">
+                        <div> Добыча бокситов </div>
+                    </div>
+                    <div class="map-type-item" data-type="type2">
+                        <div> Производство глинозема </div>
+                    </div>
+                    <div class="map-type-item" data-type="type3">
+                        <div> Производство алюминия </div>
+                    </div>
+                </div>
+
+                <div class="map-years">
+                    <div class="map-years-prev"> <i class="mdi mdi-chevron-left"></i> </div>
+                    <div class="map-years-container">
+                        <div class="map-years-items">
+                            <div class="map-years-items-item" data-year="2000"> <div> 2000 </div> </div>
+                            <div class="map-years-items-item" data-year="2001"> <div> 2001 </div> </div>
+                            <div class="map-years-items-item" data-year="2002"> <div> 2002 </div> </div>
+                            <div class="map-years-items-item" data-year="2003"> <div> 2003 </div> </div>
+                            <div class="map-years-items-item" data-year="2004"> <div> 2004 </div> </div>
+                            <div class="map-years-items-item" data-year="2005"> <div> 2005 </div> </div>
+                            <div class="map-years-items-item" data-year="2006"> <div> 2006 </div> </div>
+                            <div class="map-years-items-item" data-year="2007"> <div> 2007 </div> </div>
+                            <div class="map-years-items-item" data-year="2008"> <div> 2008 </div> </div>
+                            <div class="map-years-items-item" data-year="2009"> <div> 2009 </div> </div>
+                            <div class="map-years-items-item" data-year="2010"> <div> 2010 </div> </div>
+                            <div class="map-years-items-item" data-year="2011"> <div> 2011 </div> </div>
+                            <div class="map-years-items-item" data-year="2012"> <div> 2012 </div> </div>
+                            <div class="map-years-items-item" data-year="2013"> <div> 2013 </div> </div>
+                            <div class="map-years-items-item active" data-year="2014"> <div> 2014 </div> </div>
+                        </div>
+                    </div>
+                    <div class="map-years-next"> <i class="mdi mdi-chevron-right"></i> </div>
+                </div>
+            </div>
+        </div>
+
         <div class="production">
-            <h2> Произоводство и потребление алюминия в мире </h2>
+            <h2> Производство и потребление алюминия в мире </h2>
 
             <div class="production-legend">
                 <div class="production-legend-item">
@@ -228,8 +367,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </main>
 

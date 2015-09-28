@@ -10,7 +10,7 @@ body {
   font-size: 13px;
   font-weight: 400;
   color: #fff;
-  line-height: 24px;
+  line-height: 14px;
   letter-spacing: 0;
 }
 h1 {
@@ -24,7 +24,7 @@ h2 {
   font-size: 28px;
   font-weight: 300;
   color: #fff;
-  line-height: 72px;
+  line-height: 36px;
   letter-spacing: 0;
 }
 h1,
@@ -136,13 +136,18 @@ main .main-description {
   -webkit-justify-content: center;
   justify-content: center;
   margin-top: 54px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 24px;
+  letter-spacing: 0;
 }
 main .main-description-item {
   padding: 0 16px;
   max-width: 490px;
 }
 main .production {
-  margin: 20px 0;
+  margin: 40px 0;
   text-align: center;
 }
 main .production-legend {
@@ -275,6 +280,140 @@ main .production-graph-years {
   color: #fff;
   line-height: 20px;
   letter-spacing: 0;
+}
+.map {
+  text-align: center;
+  margin-top: 30px;
+}
+.map-container {
+  position: relative;
+  margin-top: 45px;
+}
+.map-type {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 23px;
+  letter-spacing: 0.01em;
+}
+.map-type-item {
+  margin: 0 5px;
+  padding: 6px 24px;
+  cursor: pointer;
+  -webkit-transition: background-color 300ms ease;
+  -moz-transition: background-color 300ms ease;
+  -o-transition: background-color 300ms ease;
+  -ms-transition: background-color 300ms ease;
+  transition: background-color 300ms ease;
+}
+.map-type-item.active {
+  background-color: #fff;
+  color: #000;
+}
+.map-type-item div {
+  border-bottom: 1px dashed #fff;
+}
+.map-graph {
+  margin: -20px -235px;
+  background-image: url("/audit/test/img/map_alum6.png");
+}
+.map-years {
+  position: absolute;
+  width: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-top: -40px;
+}
+.map-years-container {
+  width: 375px;
+  max-width: 375px;
+  overflow: hidden;
+}
+.map-years-items {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -moz-box-pack: end;
+  -o-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 23px;
+  letter-spacing: 0.01em;
+}
+.map-years-items-item {
+  margin: 0 5px;
+  padding: 6px 10px;
+  min-width: 45px;
+  cursor: pointer;
+  -webkit-transition: background-color 300ms ease;
+  -moz-transition: background-color 300ms ease;
+  -o-transition: background-color 300ms ease;
+  -ms-transition: background-color 300ms ease;
+  transition: background-color 300ms ease;
+}
+.map-years-items-item.active {
+  background-color: #fff;
+  color: #000;
+}
+.map-years-items-item div {
+  width: 45px;
+  border-bottom: 1px dashed #fff;
+}
+.map-years i {
+  margin: 0 10px;
+  font-size: 36px;
+  cursor: pointer;
 }
 footer {
   background-color: #f2f3f8;
