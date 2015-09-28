@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7491c0ce-84d1-4919-a723-4b661fdb03fb" name="Default" comment="">
+    <list default="true" id="7491c0ce-84d1-4919-a723-4b661fdb03fb" name="Default" comment="fix">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/index.html" afterPath="$PROJECT_DIR$/test/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -27,7 +27,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.22727273">
+            <state vertical-scroll-proportion="-0.5194805">
               <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
               <folding />
             </state>
@@ -551,7 +551,13 @@
       <option name="project" value="LOCAL" />
       <updated>1443398693163</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix">
+      <created>1443398721760</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1443398721760</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -973,7 +979,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.22727273">
+        <state vertical-scroll-proportion="-0.5194805">
           <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
           <folding />
         </state>
